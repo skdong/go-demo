@@ -18,10 +18,9 @@ func SetupSignalHandler() <-chan struct{} {
 	signal.Notify(shutdownHandler, shutdownSignals...)
 	go func() {
 		<-shutdownHandler
-		stop <- struct{}{}
+		close(stop)
 		<-shutdownHandler
 		os.Exit(1)
-		close(stop)
 	}()
 	return stop
 

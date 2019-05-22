@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -23,8 +24,7 @@ func RunServer(stopCh <-chan struct{}) error {
 	fmt.Println("before stop signal")
 	<-stopCh
 	fmt.Println("recive stop signal")
-	<-stopCh
-	fmt.Println("recive stop signal second times")
+	time.Sleep(30)
 
 	return nil
 }
