@@ -20,8 +20,11 @@ func RunServer(stopCh <-chan struct{}) error {
 		http.ListenAndServe(":80", nil)
 	}()
 
+	fmt.Println("before stop signal")
 	<-stopCh
+	fmt.Println("recive stop signal")
 	<-stopCh
+	fmt.Println("recive stop signal second times")
 
 	return nil
 }
