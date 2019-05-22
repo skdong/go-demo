@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/spfl3/cobra"
+	"github.com/spf13/cobra"
 )
 
 func RunServer(stopCh <-chan struct{}) error {
@@ -39,7 +39,7 @@ func ServerCommand(stopCh <-chan struct{}) *cobra.Command {
 }
 
 func main() {
-	cmd = ServerCommand(SetupSignalHandler())
+	cmd := ServerCommand(SetupSignalHandler())
 	if err := cmd.Execute(); err != nil {
 		fmt.Fprint(os.Stderr, "error: %v\n", err)
 		os.Exit(1)
