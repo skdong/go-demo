@@ -24,7 +24,7 @@ func RunServer(stopCh <-chan struct{}) error {
 	fmt.Println("before stop signal")
 	<-stopCh
 	fmt.Println("recive stop signal")
-	time.Sleep(30)
+	time.Sleep(30000)
 
 	return nil
 }
