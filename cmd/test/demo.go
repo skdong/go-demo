@@ -12,13 +12,17 @@ func RunServer(stopCh <-chan struct{}) error {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "welcome to my website")
 	})
+
 	fs := http.FileServer(http.Dir("static/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
 	go func() {
 		http.ListenAndServe(":80", nil)
 	}()
+
 	<-stopCh
 	<-stopCh
+
 	return nil
 }
 
